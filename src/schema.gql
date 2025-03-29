@@ -1,0 +1,54 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type AuthResponse {
+  token: String!
+  user: SignUpResponse!
+}
+
+input BiometricInput {
+  left_index_finger: String!
+  left_middle_finger: String!
+  left_ring_finger: String!
+  left_short_finger: String!
+  left_thumb_finger: String!
+  right_index_finger: String!
+  right_middle_finger: String!
+  right_ring_finger: String!
+  right_short_finger: String!
+  right_thumb_finger: String!
+}
+
+input BiometricLoginInput {
+  biometric_key: String!
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+type Mutation {
+  biometricLogin(input: BiometricLoginInput!): AuthResponse!
+  login(input: LoginInput!): AuthResponse!
+  register(input: SignUpInput!): AuthResponse!
+  setBiometric(input: BiometricInput!): AuthResponse!
+}
+
+type Query {
+  sayHello: String!
+}
+
+input SignUpInput {
+  email: String!
+  name: String!
+  password: String!
+}
+
+type SignUpResponse {
+  biometric_key: String
+  email: String!
+  id: String!
+  name: String!
+}

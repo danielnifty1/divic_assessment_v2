@@ -1,0 +1,127 @@
+{
+	"info": {
+		"_postman_id": "06540e2e-9bb3-4124-9ffd-58086894af07",
+		"name": "divic_assessment_v2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "mutation Register($input: SignUpInput!) { \r\n    register(input: $input) { \r\n     \r\n         user{\r\n              id \r\n              email\r\n\r\n               name }\r\n           } \r\n\r\n              token\r\n           \r\n           }",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/graphql/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"graphql",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login standard",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": " mutation Login($input: LoginInput!) { \r\n     login(input: $input) {\r\n          user { \r\n              id \r\n              email \r\n              createdAt \r\n              } token }\r\n               }",
+						"variables": "{\r\n    \"input\":{\r\n      \"email\": \"my1email1w@gmail.com\",\r\n      \"password\": \"Greatness.1\"\r\n    }\r\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/graphql/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"graphql",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "set Biometric",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3RAZXhhbXBsZS5jb20iLCJzdWIiOiJhN2Y1NDBjNS0xOGU4LTQ1YTItODkwZi02ZTYyYTVmNTUwNmIiLCJpYXQiOjE3NDMyNTAyNzEsImV4cCI6MTc0MzI1Mzg3MX0.iUfIv3W67L1Yr8EYElDqeGzcpFv9tkwO7VDBcn01IJ8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "# Write your query or mutation here\r\nmutation SetBiometric($input: BiometricInput!) { setBiometric(input: $input) { \r\n     \r\n    user {\r\n         id \r\n         email\r\n          name\r\n           }\r\n    token \r\n    } \r\n    }",
+						"variables": "{\r\n    \"input\": {\r\n      \"right_thumb_finger\": \"thumb123\",\r\n      \"right_index_finger\": \"index123\",\r\n      \"right_middle_finger\": \"middle123\",\r\n      \"right_ring_finger\": \"ring123\",\r\n      \"right_short_finger\": \"short123\",\r\n      \"left_thumb_finger\": \"leftthumb123\",\r\n      \"left_index_finger\": \"leftindex123\",\r\n      \"left_middle_finger\": \"leftmiddle123\",\r\n      \"left_ring_finger\": \"leftring123\",\r\n      \"left_short_finger\": \"leftshort123\"\r\n    }\r\n  }"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/graphql/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"graphql",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Biometric Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": " mutation Login($input: LoginInput!) { \r\n     login(input: $input) {\r\n          user { \r\n              id \r\n              email \r\n              \r\n              } token }\r\n               }",
+						"variables": "{\r\n    \"input\":{\r\n      \"email\": \"test@example.com\",\r\n      \"password\": \"password123\"\r\n    }\r\n}"
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/graphql/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"graphql",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
